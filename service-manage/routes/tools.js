@@ -1,3 +1,16 @@
+/**
+ * @swagger
+ * /hello:
+ *   get:
+ *     tags:
+ *       - 测试
+ *     summary: GET 测试
+ *     description: 用于测试基础 GET 请求的接口
+ *     responses:
+ *       200:
+ *         description: 【成功】 返回 world
+ */
+
 const express = require('express');
 const router = express.Router();
 
