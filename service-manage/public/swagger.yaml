@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  description: "为爬虫提供api接口"
+  version: "1.0.0"
+  title: "Spider Api"
+  termsOfService: ""
+  contact:
+    email: "15517736015@163.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+# host: "petstore.swagger.io"
+# basePath: "/v2"
+tags:
+  - name: "waitwaitpay"
+    description: "waitwaitpay 解密接口"
+    # externalDocs:
+    #   description: "Find out more"
+    #   url: "http://swagger.io"
+#  - name: "store"
+#    description: "Access to Petstore orders"
+#  - name: "user"
+#    description: "Operations about user"
+#    externalDocs:
+#      description: "Find out more about our store"
+#      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /tools/wwt:
+    post:
+      tags:
+        - "waitwaitpay"
+      summary: "返回解码之后的结果"
+      description: ""
+      operationId: "addPet"
+      consumes:
+        - "application/json"
+        - "application/xml"
+      produces:
+        - "application/xml"
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Pet object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/wwt"
+      responses:
+        "405":
+          description: "Invalid input"
+      security:
+        - petstore_auth:
+            - "write:pets"
+            - "read:pets"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  wwt:
+    type: "object"
+    required:
+      - "uuid"
+      - "encode_str"
+    properties:
+      uuid:
+        type: "string"
+        example: '80d9a902-d2cc-11ea-bb94-c30c018924fd'
+      encode_str:
+        type: "string"
+        example: "ZWMyNTdiYWY3MHicxVPbbqMwEP2aeW8CBPNoE/LcP0AuuAsKt8XQaP++M0MA\
+                   02yQtn1YybIG45lz5swxhAqORzvoYbQYgCdxb68UHmPca2Ot/mWWX8uP3tix\
+                     Gu7nXKTRH+7n77HMru5BUTbDWic5gZAQCQ4ikB4F8gKRD4kPSoEKFyw7vg3l\
+                     UK0sDk66ABXcL4fn6f5Nl7Uud7AxZ0E6E/ZTJAKKYhAvkCBJNSNSdgDHwEW1\
+                     JmubPP1P4NdxBxKR4llrDyTWC0BgJbGHHUGE64VJhKBOhC0PIAMm4dNyCPQm\
+                     K3S/OOU5C0ng0QHpBOsUd2gg0wAkcg9JLkycdBPJxidIY2by0Y5ZYXqXiC3a\
+                     W5q1fWP6tNb93ZbvurLma1pqx66rym1+25kmLdp6093jrNDHkUeMFQ8tVLrr\
+                     0kbXBCJfX3mKKOaJgwP5du4bnfNe9rVTLWStExY9AemvV3WTmWor0IWLnmhI\
+                     QrhTYeK5GXRZ/Yz6HlEcggzn4Pw9onl7a6pW56njmb9SDekhCMXVzqA8doHg\
+                     E0G+UJPSF24kZqVxxfM1ebcPPiIsha+QnPX4PKb0w07bX1G/1zaqXP1JM93n\
+                     ez37RBftsDLm5jcnXFnxGJAVNRyQcejZPmsvZnNdOOuhHYKICGWCIKHdy0/4\
+                     /INNfq7gvD4BDLWZQA=="
+    xml:
+      name: "wwt"
+
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

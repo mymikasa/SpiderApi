@@ -37,8 +37,11 @@ router.post('/bd', jsonParser, function (req, res, next) {
 });
 
 router.post('/wwt', jsonParser, function (req, res, next){
-    let param = req.body.key;
-    let ans = wwtTransform(param);
+    let param = req.body;
+    let uuid = param.uuid;
+    let encodeStr = param.encode_str;
+    let ans = wwtTransform(encodeStr);
+    console.log(ans);
     res.send(JSON.stringify(ans));
     // let jsonString = {};
     // jsonString[]

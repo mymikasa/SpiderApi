@@ -1,13 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var bodyParser = require('body-parser')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require('body-parser')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var toolsRouter = require('./routes/tools');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const toolsRouter = require('./routes/tools');
 
 var app = express();
 // var expressSwagger = require('express-swagger-generator')(app);
