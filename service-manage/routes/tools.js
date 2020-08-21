@@ -18,7 +18,8 @@ const bodyParser = require('body-parser');
 
 const bdTransform = require('./spiderTools/baiduTranslate.js');
 const wwtTransform = require('./spiderTools/waitwaitpay/decode');
-const jiyanFirstW = require('./spiderTools/jiyan/getFirstW.js')
+// const ajax_w = require('./spiderTools/jiyan/getFirstW.js').ajax_w;
+const jiyan = require('./spiderTools/jiyan/getFirstW.js');
 
 const jsonParser = bodyParser.json();
 
@@ -55,10 +56,21 @@ router.post('/jiyan/firstw', jsonParser, function (req, res, next) {
     let gt = param.gt;
     let challenge = param.challenge;
 
-    let ans = jiyanFirstW(gt, challenge);
+    let ans = jiyan.get_w(gt, challenge);
     // console.log(ans);
     res.send(JSON.stringify({'ans': ans}));
 })
 
-router.post('/jiyan/ajaxw', jsonParser, function (req, res, next))
-module.exports = router
+
+router.post('/jiyan/ajaxw', jsonParser, function (req, res, next) {
+    let param = req.body;
+    let gt = param.gt;
+    let challenge = param.challenge;
+    let c = param.c, s = param.s
+
+    let ans = jiyan.ajax_w(gt, challenge, c, s);
+    // console.log(ans);
+    res.send(JSON.stringify({'ans': ans}));
+})
+
+module.exports = router;

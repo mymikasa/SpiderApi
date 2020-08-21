@@ -3,6 +3,9 @@
 var gt = '9e39449328e9e204b9c98fee1cce2a94';
 var challenge = 'c5fa60df282304286402de75c3b102c6';
 var aeskey = '4f132ae5ee801789';
+var s = "35674e48";
+var c = [12, 58, 98, 36, 43, 95, 62, 15, 12];
+var originalTime = (new Date()).getTime();
 
 
 var GmEn = function () {
@@ -1735,6 +1738,237 @@ var OYFZ = {
     }
 };
 
+function AWYz(e) {
+  function BAev(e, t) {
+    return e << t | e >>> 32 - t;
+  }
+
+  function CHCn(e, t) {
+    var r, n, i, o, a;
+    i = e & 2147483648;
+    o = t & 2147483648;
+    r = e & 1073741824;
+    n = t & 1073741824;
+    a = (e & 1073741823) + (t & 1073741823);
+
+    if (r & n) {
+      return a ^ 2147483648 ^ i ^ o;
+    }
+
+    if (r | n) {
+      if (a & 1073741824) {
+        return a ^ 3221225472 ^ i ^ o;
+      } else {
+        return a ^ 1073741824 ^ i ^ o;
+      }
+    } else {
+      return a ^ i ^ o;
+    }
+  }
+
+  function F(e, t, r) {
+    return e & t | ~e & r;
+  }
+
+  function G(e, t, r) {
+    return e & r | t & ~r;
+  }
+
+  function H(e, t, r) {
+    return e ^ t ^ r;
+  }
+
+  function I(e, t, r) {
+    return t ^ (e | ~r);
+  }
+
+  function FF(e, t, r, n, i, o, a) {
+    e = CHCn(e, CHCn(CHCn(F(t, r, n), i), a));
+    return CHCn(BAev(e, o), t);
+  }
+
+  function GG(e, t, r, n, i, o, a) {
+    e = CHCn(e, CHCn(CHCn(G(t, r, n), i), a));
+    return CHCn(BAev(e, o), t);
+  }
+
+  function HH(e, t, r, n, i, o, a) {
+    e = CHCn(e, CHCn(CHCn(H(t, r, n), i), a));
+    return CHCn(BAev(e, o), t);
+  }
+
+  function II(e, t, r, n, i, o, a) {
+    e = CHCn(e, CHCn(CHCn(I(t, r, n), i), a));
+    return CHCn(BAev(e, o), t);
+  }
+
+  function DMfs(e) {
+    var t;
+    var r = e["length"];
+    var n = r + 8;
+    var i = (n - n % 64) / 64;
+    var o = (i + 1) * 16;
+    var a = Array(o - 1);
+    var s = 0;
+    var _ = 0;
+
+    while (_ < r) {
+      t = (_ - _ % 4) / 4;
+      s = _ % 4 * 8;
+      a[t] = a[t] | e["charCodeAt"](_) << s;
+      _++;
+    }
+
+    t = (_ - _ % 4) / 4;
+    s = _ % 4 * 8;
+    a[t] = a[t] | 128 << s;
+    a[o - 2] = r << 3;
+    a[o - 1] = r >>> 29;
+    return a;
+  }
+
+  function Ehbw(e) {
+    var t = "",
+        r = "",
+        n,
+        i;
+
+    for (i = 0; i <= 3; i++) {
+      n = e >>> i * 8 & 255;
+      r = "0" + n["toString"](16);
+      t = t + r["substr"](r["length"] - 2, 2);
+    }
+
+    return t;
+  }
+
+  function FQjl(e) {
+    e = e["replace"](/\r\n/g, "\n");
+    var t = "";
+
+    for (var r = 0; r < e["length"]; r++) {
+      var n = e["charCodeAt"](r);
+
+      if (n < 128) {
+        t += String["fromCharCode"](n);
+      } else if (n > 127 && n < 2048) {
+        t += String["fromCharCode"](n >> 6 | 192);
+        t += String["fromCharCode"](n & 63 | 128);
+      } else {
+        t += String["fromCharCode"](n >> 12 | 224);
+        t += String["fromCharCode"](n >> 6 & 63 | 128);
+        t += String["fromCharCode"](n & 63 | 128);
+      }
+    }
+
+    return t;
+  }
+
+  var t = [];
+
+  var r, n, i, o, a, s, _, c, l;
+
+  var u = 7,
+      f = 12,
+      p = 17,
+      d = 22;
+  var g = 5,
+      h = 9,
+      v = 14,
+      m = 20;
+  var w = 4,
+      E = 11,
+      x = 16,
+      y = 23;
+  var b = 6,
+      T = 10,
+      S = 15,
+      R = 21;
+  e = FQjl(e);
+  t = DMfs(e);
+  s = 1732584193;
+  _ = 4023233417;
+  c = 2562383102;
+  l = 271733878;
+
+  for (r = 0; r < t["length"]; r += 16) {
+    n = s;
+    i = _;
+    o = c;
+    a = l;
+    s = FF(s, _, c, l, t[r + 0], u, 3614090360);
+    l = FF(l, s, _, c, t[r + 1], f, 3905402710);
+    c = FF(c, l, s, _, t[r + 2], p, 606105819);
+    _ = FF(_, c, l, s, t[r + 3], d, 3250441966);
+    s = FF(s, _, c, l, t[r + 4], u, 4118548399);
+    l = FF(l, s, _, c, t[r + 5], f, 1200080426);
+    c = FF(c, l, s, _, t[r + 6], p, 2821735955);
+    _ = FF(_, c, l, s, t[r + 7], d, 4249261313);
+    s = FF(s, _, c, l, t[r + 8], u, 1770035416);
+    l = FF(l, s, _, c, t[r + 9], f, 2336552879);
+    c = FF(c, l, s, _, t[r + 10], p, 4294925233);
+    _ = FF(_, c, l, s, t[r + 11], d, 2304563134);
+    s = FF(s, _, c, l, t[r + 12], u, 1804603682);
+    l = FF(l, s, _, c, t[r + 13], f, 4254626195);
+    c = FF(c, l, s, _, t[r + 14], p, 2792965006);
+    _ = FF(_, c, l, s, t[r + 15], d, 1236535329);
+    s = GG(s, _, c, l, t[r + 1], g, 4129170786);
+    l = GG(l, s, _, c, t[r + 6], h, 3225465664);
+    c = GG(c, l, s, _, t[r + 11], v, 643717713);
+    _ = GG(_, c, l, s, t[r + 0], m, 3921069994);
+    s = GG(s, _, c, l, t[r + 5], g, 3593408605);
+    l = GG(l, s, _, c, t[r + 10], h, 38016083);
+    c = GG(c, l, s, _, t[r + 15], v, 3634488961);
+    _ = GG(_, c, l, s, t[r + 4], m, 3889429448);
+    s = GG(s, _, c, l, t[r + 9], g, 568446438);
+    l = GG(l, s, _, c, t[r + 14], h, 3275163606);
+    c = GG(c, l, s, _, t[r + 3], v, 4107603335);
+    _ = GG(_, c, l, s, t[r + 8], m, 1163531501);
+    s = GG(s, _, c, l, t[r + 13], g, 2850285829);
+    l = GG(l, s, _, c, t[r + 2], h, 4243563512);
+    c = GG(c, l, s, _, t[r + 7], v, 1735328473);
+    _ = GG(_, c, l, s, t[r + 12], m, 2368359562);
+    s = HH(s, _, c, l, t[r + 5], w, 4294588738);
+    l = HH(l, s, _, c, t[r + 8], E, 2272392833);
+    c = HH(c, l, s, _, t[r + 11], x, 1839030562);
+    _ = HH(_, c, l, s, t[r + 14], y, 4259657740);
+    s = HH(s, _, c, l, t[r + 1], w, 2763975236);
+    l = HH(l, s, _, c, t[r + 4], E, 1272893353);
+    c = HH(c, l, s, _, t[r + 7], x, 4139469664);
+    _ = HH(_, c, l, s, t[r + 10], y, 3200236656);
+    s = HH(s, _, c, l, t[r + 13], w, 681279174);
+    l = HH(l, s, _, c, t[r + 0], E, 3936430074);
+    c = HH(c, l, s, _, t[r + 3], x, 3572445317);
+    _ = HH(_, c, l, s, t[r + 6], y, 76029189);
+    s = HH(s, _, c, l, t[r + 9], w, 3654602809);
+    l = HH(l, s, _, c, t[r + 12], E, 3873151461);
+    c = HH(c, l, s, _, t[r + 15], x, 530742520);
+    _ = HH(_, c, l, s, t[r + 2], y, 3299628645);
+    s = II(s, _, c, l, t[r + 0], b, 4096336452);
+    l = II(l, s, _, c, t[r + 7], T, 1126891415);
+    c = II(c, l, s, _, t[r + 14], S, 2878612391);
+    _ = II(_, c, l, s, t[r + 5], R, 4237533241);
+    s = II(s, _, c, l, t[r + 12], b, 1700485571);
+    l = II(l, s, _, c, t[r + 3], T, 2399980690);
+    c = II(c, l, s, _, t[r + 10], S, 4293915773);
+    _ = II(_, c, l, s, t[r + 1], R, 2240044497);
+    s = II(s, _, c, l, t[r + 8], b, 1873313359);
+    l = II(l, s, _, c, t[r + 15], T, 4264355552);
+    c = II(c, l, s, _, t[r + 6], S, 2734768916);
+    _ = II(_, c, l, s, t[r + 13], R, 1309151649);
+    s = II(s, _, c, l, t[r + 4], b, 4149444226);
+    l = II(l, s, _, c, t[r + 11], T, 3174756917);
+    c = II(c, l, s, _, t[r + 2], S, 718787259);
+    _ = II(_, c, l, s, t[r + 9], R, 3951481745);
+    s = CHCn(s, n);
+    _ = CHCn(_, i);
+    c = CHCn(c, o);
+    l = CHCn(l, a);
+  }
+
+  var A = Ehbw(s) + Ehbw(_) + Ehbw(c) + Ehbw(l);
+  return A["toLowerCase"]();
+} 
 function get_w(gt, challenge) {
     
     // todo 
@@ -1755,5 +1989,133 @@ function get_w(gt, challenge) {
     return res;
 }
 
+function ajax_w(gt, challenge, e, s) {
+  //todo
+  var e = "M5KqY97(7(7(78Pj9AM*PjA?O)38Pjp8Oc9*M29-DB-BA(((b55(56I(cA)M1(((cBF@BYb,(g,(,(q,6I(5(.B.,G.c-9M:-9-GZ1bc(:-)-IL*G,C,C))OOE11RE31KDPj-1KE-1-/?**2PTM:NNMq3U?-b?:UI:aEKDS0GE51jEN)Ue7:(,E:K**)G29OFU11S)O/ODMENkG)O)P@KE-1FjRj11FkMbO),j-1Rj/1G)O)MiMENjCDMEOEJV2c(C-)B)NAM/TM((@:((,e5nne,e8((((n,(b((((q((,eqp3(-Ib?9abjA*)/N@N*L_VB.M97)M?MM-1-)*)MEE(/)(5/*K*M9MM-PM93)()MM(EE(b92*9f1c1?0)MY-,19M92.G))A6R:RGD9QC)(U-)M96,G/9dM9/)MNM93)(E-*MM7,ME/((((1Lqj((()(6OVp3K*((((K)S(EEE(M0TpLMKE0SE(/KFS/K0E?-kb16(N5*-AcSNb16(N48RBNcFUc-b.*(/*(Q1EA*/*(M20(b9R)b1,(M(Sf,UQ2E1,Mb9j10MMC.(b5(7*)EE,(M(QI**953Q*)/2b1.(MG95-55(*)*(b1(51(95*A*(,(b(bA(191*-*(bI(15:HHj(LM,k9"
+  var t = "M(*((1((M(("
+  var r = "13716magic data120601magic dataCSS1Compatmagic data71magic data-1magic data-1magic data-1magic data-1magic data3magic data-1magic data-1magic data7magic data46magic data4magic data1magic data6magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data61magic data9magic data-1magic data-1magic data-1magic data0magic data27magic data0magic data27magic data1920magic data226magic data1920magic data1053magic datazhmagic datazh,en-US,en,zh-CNmagic data-1magic data1magic data24magic dataMozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36magic data1magic data1magic data1920magic data1080magic data1920magic data1053magic data1magic data1magic data1magic data-1magic dataLinux x86_64magic data0magic data-8magic data9e39449328e9e204b9c98fee1cce2a94magic datac5fa60df282304286402de75c3b102c6magic datainternal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-pluginmagic data0magic data-1magic data0magic data8magic dataArial,Courier,CourierNew,Helvetica,Times,TimesNewRomanmagic data1597891243563magic data-1magic data-1magic data-1magic data281magic data17magic data10magic data24magic data24magic data-1magic data-1"
+  var n = "INPUT_0|INPUT_0|INPUT_0"
+  var o = 70
 
-module.exports = get_w;
+  var tm = {
+      a: originalTime,
+      b: originalTime + 144,
+      c: originalTime + 144,
+      d: 0,
+      e: 0,
+      f: originalTime + 2,
+      g: originalTime + 11,
+      h: originalTime + 35,
+      i: originalTime + 35,
+      j: originalTime + 67,
+      k: originalTime + 47,
+      l: originalTime + 67,
+      m: originalTime + 133,
+      n: originalTime + 193,
+      o: originalTime + 164,
+      p: originalTime + 818,
+      q: originalTime + 818,
+      r: originalTime + 824,
+      s: originalTime + 1776,
+      t: originalTime + 1776,
+      u: originalTime + 1778
+  }
+
+  var pp = {
+      by: 2,
+      de: false,
+      em: {ph: 0, cp: 0, ek: "11", wd: 0, nt: 0, ph: 0, sc: 0 ,si: 0 ,wd: 0},
+      fp: ["move", 828, 216, originalTime + 2060, "pointermove"],
+      lp: ["up", 1561, 168, originalTime + 2060, "pointerup"],
+      me: true,
+      ren: "Mesa Intel(R) UHD Graphics 620 (KBL GT2)",
+      te: false,
+      tm: tm,
+      v: "8.9.8",
+      ven: "Intel",
+  }
+
+  var i = [13702, 120367, "CSS1Compat", 67, -1, -1, -1, -1, 1, -1, -1, 7, 46, 4, 2, 6, -1, -1, -1, -1, -1, -1, -1, -1, 62, 9, -1, -1, -1, 0, 27, 0, 27, 1920, 238, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 283, 17, 10, 18, 24, -1, -1];
+          // [13683, 118074, "CSS1Compat", 65, -1, -1, -1, -1, 3, -1, -1, 2, 46, 4, 1, 6, -1, -1, -1, -1, -1, -1, -1, -1, 61, 3, -1, -1, -1, 0, 27, 0, 27, 1920, 224, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 268, 17, 10, 18, 24, -1, -1]
+  i = i.join('!!');
+  var a = [["lang", "zh-cn" || "zh-cn"], ["type", "fullpage"], ["tt", tvBD(e, c, s) || -1], ["light", n || -1], ["s", AWYz(OYFZ["fIeV"](t))], ["h", AWYz(OYFZ["fIeV"](r))], ["hh", AWYz(r)], ["hi", AWYz(i)], ["vip_order", undefined || -1], ["ct", undefined || -1], ["ep", pp || -1], ["passtime", o || -1], ["rp", AWYz(gt + challenge + o)]];
+  var gg = "";
+
+  for (var s = 0; s < a["length"]; s++) {
+      gg += "\"" + a[s][0] + "\":" + yhMu["stringify"](a[s][1]) + ",";
+  }
+
+  function tvBD(e, t, r) {
+      if (!t || !r) {
+        return e;
+      }
+
+      var n = 0;
+      var i = 2;
+      var o;
+      var a = e;
+      var s = t[0],
+          _ = t[2],
+          c = t[4];
+
+      while (o = r["substr"](n, i)) {
+        n += i;
+        var l = parseInt(o, 16);
+        var u = String["fromCharCode"](l);
+        var f = (s * l * l + _ * l + c) % e["length"];
+        a = a["substr"](0, f) + u + a["substr"](f);
+      }
+
+      return a;
+  }
+  // console.log(a)
+
+  function HQIS() {
+      var t = ["bbOy"];
+      return function(e) {
+          t["push"](e["toString"]());
+          var IbFr = "";
+
+          (function addHash(e, t) {
+              function JQLM(e) {
+                  var t = 5381;
+                  var r = e["length"]
+                    , n = 0;
+
+                  while (r--) {
+                      t = (t << 5) + t + e["charCodeAt"](n++);
+                  }
+
+                  t &= ~(1 << 31);
+                  return t;
+              }
+
+              new Date()["getTime"]() - t["getTime"]() > 100 && (e = "qwe");
+              IbFr = "{" + gg + "\"captcha_token\":\"" + JQLM(addHash["toString"]() + JQLM(JQLM["toString"]()) + JQLM(e["toString"]())) + "\"" + "}";
+          }
+          )(t["shift"](), new Date());
+
+          ee = OYFZ["gvFk"](EEyM()["encrypt"](IbFr, aeskey));
+          return ee;
+      }
+      ;
+  }
+
+  vv = HQIS();
+
+  vv("");
+
+  vv("eelkQxJDqi8Y6oLD");
+
+  vv("rU7ymTjkucF2PKOJ");
+
+  return vv("qCmwARTr5PbwtMXK");
+}
+
+
+// console.log(ajax_w(gt, challenge, c, s))
+
+module.exports = {
+  get_w,
+  ajax_w,
+};
