@@ -18,6 +18,7 @@ const bodyParser = require('body-parser');
 
 const bdTransform = require('./spiderTools/baiduTranslate.js');
 const wwtTransform = require('./spiderTools/waitwaitpay/decode');
+const jiyanFirstW = require('./spiderTools/jiyan/getFirstW.js')
 
 const jsonParser = bodyParser.json();
 
@@ -46,4 +47,18 @@ router.post('/wwt', jsonParser, function (req, res, next){
     // let jsonString = {};
     // jsonString[]
 });
+
+// 极验3滑块
+
+router.post('/jiyan/firstw', jsonParser, function (req, res, next) {
+    let param = req.body;
+    let gt = param.gt;
+    let challenge = param.challenge;
+
+    let ans = jiyanFirstW(gt, challenge);
+    // console.log(ans);
+    res.send(JSON.stringify({'ans': ans}));
+})
+
+router.post('/jiyan/ajaxw', jsonParser, function (req, res, next))
 module.exports = router
