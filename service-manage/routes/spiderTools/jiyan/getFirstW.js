@@ -1989,13 +1989,19 @@ function get_w(gt, challenge) {
     return res;
 }
 
-function ajax_w(gt, challenge, e, s) {
+function ajax_w(gt, challenge, c, s) {
   //todo
-  var e = "M5KqY97(7(7(78Pj9AM*PjA?O)38Pjp8Oc9*M29-DB-BA(((b55(56I(cA)M1(((cBF@BYb,(g,(,(q,6I(5(.B.,G.c-9M:-9-GZ1bc(:-)-IL*G,C,C))OOE11RE31KDPj-1KE-1-/?**2PTM:NNMq3U?-b?:UI:aEKDS0GE51jEN)Ue7:(,E:K**)G29OFU11S)O/ODMENkG)O)P@KE-1FjRj11FkMbO),j-1Rj/1G)O)MiMENjCDMEOEJV2c(C-)B)NAM/TM((@:((,e5nne,e8((((n,(b((((q((,eqp3(-Ib?9abjA*)/N@N*L_VB.M97)M?MM-1-)*)MEE(/)(5/*K*M9MM-PM93)()MM(EE(b92*9f1c1?0)MY-,19M92.G))A6R:RGD9QC)(U-)M96,G/9dM9/)MNM93)(E-*MM7,ME/((((1Lqj((()(6OVp3K*((((K)S(EEE(M0TpLMKE0SE(/KFS/K0E?-kb16(N5*-AcSNb16(N48RBNcFUc-b.*(/*(Q1EA*/*(M20(b9R)b1,(M(Sf,UQ2E1,Mb9j10MMC.(b5(7*)EE,(M(QI**953Q*)/2b1.(MG95-55(*)*(b1(51(95*A*(,(b(bA(191*-*(bI(15:HHj(LM,k9"
+  var e = "M._5-Up8Pjp*.*M-YBBiBA)@.AA.JJBDiB.0g,JgB-85@-:(:-1-:-1-:-)-YF/ePj9-aM:0N59jc*)EEL:-9-E-9-:*)-:)P-:19-E-9M:-9M:-C/Od))Eb9MN/)-)-LOU-:-1-:-1/:-)-9-:V,l(8E5n8e,5((b((,b.B(e(86?Z?M9-j-*ME-)ME**(E-*7)M@0*(9bU-llB-1/)6Q1f5)*)(E-*-a5NUH.:7S*)(@ME2h91-)M91E-((8b(((9*21)NNj/(//*U((((FM/(0TMEpbW2,/*,1p**-5*(E1*9TMMN*9R)91,(M?_3P9eOO)*@3G5FE1*/,(M1@(MF(1,(M/-(RMb7*)1bb1(qqp(8qPj"
+  // var e = "M(*((1((M(("
   var t = "M(*((1((M(("
-  var r = "13716magic data120601magic dataCSS1Compatmagic data71magic data-1magic data-1magic data-1magic data-1magic data3magic data-1magic data-1magic data7magic data46magic data4magic data1magic data6magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data61magic data9magic data-1magic data-1magic data-1magic data0magic data27magic data0magic data27magic data1920magic data226magic data1920magic data1053magic datazhmagic datazh,en-US,en,zh-CNmagic data-1magic data1magic data24magic dataMozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36magic data1magic data1magic data1920magic data1080magic data1920magic data1053magic data1magic data1magic data1magic data-1magic dataLinux x86_64magic data0magic data-8magic data9e39449328e9e204b9c98fee1cce2a94magic datac5fa60df282304286402de75c3b102c6magic datainternal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-pluginmagic data0magic data-1magic data0magic data8magic dataArial,Courier,CourierNew,Helvetica,Times,TimesNewRomanmagic data1597891243563magic data-1magic data-1magic data-1magic data281magic data17magic data10magic data24magic data24magic data-1magic data-1"
-  var n = "INPUT_0|INPUT_0|INPUT_0"
-  var o = 70
+  
+  // var r = "13716magic data120601magic dataCSS1Compatmagic data71magic data-1magic data-1magic data-1magic data-1magic data3magic data-1magic data-1magic data7magic data46magic data4magic data1magic data6magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data-1magic data61magic data9magic data-1magic data-1magic data-1magic data0magic data27magic data0magic data27magic data1920magic data226magic data1920magic data1053magic datazhmagic datazh,en-US,en,zh-CNmagic data-1magic data1magic data24magic dataMozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36magic data1magic data1magic data1920magic data1080magic data1920magic data1053magic data1magic data1magic data1magic data-1magic dataLinux x86_64magic data0magic data-8magic data9e39449328e9e204b9c98fee1cce2a94magic datac5fa60df282304286402de75c3b102c6magic datainternal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-pluginmagic data0magic data-1magic data0magic data8magic dataArial,Courier,CourierNew,Helvetica,Times,TimesNewRomanmagic data1597891243563magic data-1magic data-1magic data-1magic data281magic data17magic data10magic data24magic data24magic data-1magic data-1"
+  // var i = [13702, 120367, "CSS1Compat", 67, -1, -1, -1, -1, 1, -1, -1, 7, 46, 4, 2, 6, -1, -1, -1, -1, -1, -1, -1, -1, 62, 9, -1, -1, -1, 0, 27, 0, 27, 1920, 238, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 283, 17, 10, 18, 24, -1, -1];
+  var i = [13737,121107,"CSS1Compat",71,-1,-1,-1,-1,3,-1,-1,7,46,4,2,6,-1,-1,-1,-1,-1,-1,-1,-1,63,9,-1,-1,-1,0,27,0,27,1920,949,1920,1053,"zh","zh,en-US,en,zh-CN",-1,1,24,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",1,1,1920,1080,1920,1053,1,1,1,-1,"Linux x86_64",0,-8,gt,challenge,"internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin",0,-1,0,8,"Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman",originalTime,-1,-1,-1,283,17,10,24,24,-1,-1]
+  // var i = [13715,118822, "CSS1Compat", 71, -1, -1, -1, -1, 3, -1, -1, 2, 46, 4, 1, 6, -1, -1, -1, -1, -1, -1, -1, -1, 61, 3, -1, -1, -1, 0, 27, 0, 27, 1920, 438, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 268, 17, 10, 24, 24, -1, -1]
+  var r = i.join('magic data')
+  var n = "INPUT_0|INPUT_0"
+  var o = 2462  
 
   var tm = {
       a: originalTime,
@@ -2025,8 +2031,8 @@ function ajax_w(gt, challenge, e, s) {
       by: 2,
       de: false,
       em: {ph: 0, cp: 0, ek: "11", wd: 0, nt: 0, ph: 0, sc: 0 ,si: 0 ,wd: 0},
-      fp: ["move", 828, 216, originalTime + 2060, "pointermove"],
-      lp: ["up", 1561, 168, originalTime + 2060, "pointerup"],
+      fp: ["move", 1323, 502, originalTime + 2060, "pointermove"],
+      lp: ["up", 1557, 476, originalTime + 2060 + 1762, "pointerup"],
       me: true,
       ren: "Mesa Intel(R) UHD Graphics 620 (KBL GT2)",
       te: false,
@@ -2035,7 +2041,7 @@ function ajax_w(gt, challenge, e, s) {
       ven: "Intel",
   }
 
-  var i = [13702, 120367, "CSS1Compat", 67, -1, -1, -1, -1, 1, -1, -1, 7, 46, 4, 2, 6, -1, -1, -1, -1, -1, -1, -1, -1, 62, 9, -1, -1, -1, 0, 27, 0, 27, 1920, 238, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 283, 17, 10, 18, 24, -1, -1];
+  // var i = [13702, 120367, "CSS1Compat", 67, -1, -1, -1, -1, 1, -1, -1, 7, 46, 4, 2, 6, -1, -1, -1, -1, -1, -1, -1, -1, 62, 9, -1, -1, -1, 0, 27, 0, 27, 1920, 238, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 283, 17, 10, 18, 24, -1, -1];
           // [13683, 118074, "CSS1Compat", 65, -1, -1, -1, -1, 3, -1, -1, 2, 46, 4, 1, 6, -1, -1, -1, -1, -1, -1, -1, -1, 61, 3, -1, -1, -1, 0, 27, 0, 27, 1920, 224, 1920, 1053, "zh", "zh,en-US,en,zh-CN", -1, 1, 24, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36…L, like Gecko) Chrome/84.0.4147.125 Safari/537.36", 1, 1, 1920, 1080, 1920, 1053, 1, 1, 1, -1, "Linux x86_64", 0, -8, gt, challenge, "internal-pdf-viewer,mhjfbmdgcfjbbpaeojofohoefgiehjai,internal-nacl-plugin", 0, -1, 0, 8, "Arial,Courier,CourierNew,Helvetica,Times,TimesNewRoman", (new Date()).getTime(), -1, -1, -1, 268, 17, 10, 18, 24, -1, -1]
   i = i.join('!!');
   var a = [["lang", "zh-cn" || "zh-cn"], ["type", "fullpage"], ["tt", tvBD(e, c, s) || -1], ["light", n || -1], ["s", AWYz(OYFZ["fIeV"](t))], ["h", AWYz(OYFZ["fIeV"](r))], ["hh", AWYz(r)], ["hi", AWYz(i)], ["vip_order", undefined || -1], ["ct", undefined || -1], ["ep", pp || -1], ["passtime", o || -1], ["rp", AWYz(gt + challenge + o)]];
@@ -2091,11 +2097,13 @@ function ajax_w(gt, challenge, e, s) {
               }
 
               new Date()["getTime"]() - t["getTime"]() > 100 && (e = "qwe");
-              IbFr = "{" + gg + "\"captcha_token\":\"" + JQLM(addHash["toString"]() + JQLM(JQLM["toString"]()) + JQLM(e["toString"]())) + "\"" + "}";
-          }
+              // IbFr = "{" + gg + "\"captcha_token\":\"" + JQLM(addHash["toString"]() + JQLM(JQLM["toString"]()) + JQLM(e["toString"]())) + "\"" + "}";
+              IbFr = "{" + gg + "\"captcha_token\":\"" + 2094655964 + "\"" + "}";
+            }
           )(t["shift"](), new Date());
 
           ee = OYFZ["gvFk"](EEyM()["encrypt"](IbFr, aeskey));
+          // console.log(IbFr);
           return ee;
       }
       ;
@@ -2105,11 +2113,11 @@ function ajax_w(gt, challenge, e, s) {
 
   vv("");
 
-  vv("eelkQxJDqi8Y6oLD");
+  // vv("eelkQxJDqi8Y6oLD");
 
-  vv("rU7ymTjkucF2PKOJ");
+  // vv("rU7ymTjkucF2PKOJ");
 
-  return vv("qCmwARTr5PbwtMXK");
+  return vv("qnVopxEqYxiZNf1K");
 }
 
 

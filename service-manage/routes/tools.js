@@ -20,6 +20,7 @@ const bdTransform = require('./spiderTools/baiduTranslate.js');
 const wwtTransform = require('./spiderTools/waitwaitpay/decode');
 // const ajax_w = require('./spiderTools/jiyan/getFirstW.js').ajax_w;
 const jiyan = require('./spiderTools/jiyan/getFirstW.js');
+const encodeTrace = require('./spiderTools/jiyan/encodeSlideTrace.js')
 
 const jsonParser = bodyParser.json();
 
@@ -57,7 +58,6 @@ router.post('/jiyan/firstw', jsonParser, function (req, res, next) {
     let challenge = param.challenge;
 
     let ans = jiyan.get_w(gt, challenge);
-    // console.log(ans);
     res.send(JSON.stringify({'ans': ans}));
 })
 
@@ -66,10 +66,28 @@ router.post('/jiyan/ajaxw', jsonParser, function (req, res, next) {
     let param = req.body;
     let gt = param.gt;
     let challenge = param.challenge;
-    let c = param.c, s = param.s
+    let c = param.c, s = param.s;
 
     let ans = jiyan.ajax_w(gt, challenge, c, s);
-    // console.log(ans);
+    res.send(JSON.stringify({'ans': ans}));
+})
+
+
+router.post('/jiyan/lastw', jsonParser, function (req, res, next) {
+    let param = req.body;
+    let gt = param.gt;
+    let challenge = param.challenge;
+    let c = param.c, s = param.s, t = param.t;
+    let slide_trace = param.slide_trace;
+    let n = param.n;
+
+    console.log(JSON.stringify(param));
+
+
+
+    let ans = encodeTrace.get_last_w(t, slide_trace, n, challenge, gt, c, s);
+
+    // t, slide_trace, n, challenge, gt, c, s
     res.send(JSON.stringify({'ans': ans}));
 })
 
